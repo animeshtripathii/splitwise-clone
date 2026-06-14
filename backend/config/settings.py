@@ -70,7 +70,7 @@ DATABASES = {
 }
 
 # Add SSL requirements for production Postgres
-if DATABASES['default'].get('ENGINE') == 'django.db.backends.postgresql':
+if 'postgres' in DATABASES['default'].get('ENGINE', ''):
     DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
 
 # Custom User Auth
