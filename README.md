@@ -30,6 +30,20 @@ python backend/manage.py runserver
 ```
 The backend will run on `http://127.0.0.1:8000/api/`.
 
+### 3. Demo / Test Credentials
+To test the local or deployed application, you can log in as any of the seeded roommates using the following credentials:
+* **Password** (for all users): **`password123`**
+* **Emails**:
+  * `aisha@example.com`
+  * `rohan@example.com`
+  * `priya@example.com`
+  * `meera@example.com`
+  * `dev@example.com`
+  * `sam@example.com`
+  * `kabir@example.com` *(created automatically during CSV import)*
+
+---
+
 ### 2. Frontend Setup
 Make sure you have Node.js 18+ installed.
 
