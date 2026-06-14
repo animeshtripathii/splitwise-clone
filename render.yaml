@@ -6,7 +6,7 @@ services:
     startCommand: gunicorn config.wsgi:application --chdir backend
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.5
+        value: 3.12.3
       - key: DEBUG
         value: "False"
       - key: SECRET_KEY
