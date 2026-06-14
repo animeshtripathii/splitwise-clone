@@ -3,8 +3,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
-from splitwise.models import Group
-from splitwise.serializers import UserSerializer, RegisterSerializer, GroupSerializer
+from splitwise.models import Group, Expense, Settlement, ChatMessage
+from splitwise.serializers import (
+    UserSerializer, RegisterSerializer, GroupSerializer,
+    ExpenseSerializer, SettlementSerializer, ChatMessageSerializer
+)
 
 User = get_user_model()
 
@@ -43,5 +46,36 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
     def get_queryset(self):
-        # Only return groups the requesting user is a member of
         return Group.objects.filter(members=self.request.user).order_by('-created_at')
+
+class ExpenseViewSet(viewsets.ModelViewSet):
+    """
+    CRUD Viewset for managing expenses. Ensures users can only access expenses
+    for groups they belong to.
+    """
+    serializer_class = ExpenseSerializer
+
+    def get_queryset(self):
+        return Expense.objects.filter(group__members=self.request.user).distinct().order_by('-date', '-created_at')
+
+class SettlementViewSet(viewsets.ModelViewSet):
+    """
+    CRUD Viewset for settlements. Ensures users can only see settlements for groups they belong to.
+    """
+    serializer_class = SettlementSerializer
+
+    def get_queryset(self):
+        return Settlement.objects.filter(group__members=self.request.user).distinct().order_by('-date', '-created_at')
+
+class ChatMessageViewSet(viewsets.ModelViewSet):
+    """
+    CRUD Viewset for expense comment chat messages. Supports querying by ?expense=ID.
+    """
+    serializer_class = ChatMessageSerializer
+
+    def get_queryset(self):
+        queryset = ChatMessage.objects.filter(expense__group__members=self.request.user).distinct()
+        expense_id = self.request.query_params.get('expense')
+        if expense_id:
+            queryset = queryset.filter(expense_id=expense_id)
+        return queryset.order_by('timestamp')
