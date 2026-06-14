@@ -42,7 +42,9 @@ class Command(BaseCommand):
             group.save()
             self.stdout.write(self.style.SUCCESS('Created group: "The Flat" with 6 members.'))
         else:
-            # Ensure all members are present
-            group.members.set(seeded_users)
+            # Ensure seeded users are members without removing existing members (like Kabir)
+            for u in seeded_users:
+                if not group.members.filter(id=u.id).exists():
+                    group.members.add(u)
             group.save()
-            self.stdout.write('Group "The Flat" already exists, synced members.')
+            self.stdout.write('Group "The Flat" already exists, ensured seeded users are members.')
