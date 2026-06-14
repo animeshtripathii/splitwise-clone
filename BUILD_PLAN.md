@@ -20,10 +20,10 @@ Execution plan for the Splitwise Clone MVP.
 ## Phase 3: Auth & Backend Business Logic APIs
 - [x] Auth endpoints (JWT login/refresh/register/me).
 - [x] Group member CRUD (add/remove from group).
-- [ ] Expense CRUD:
-  - Implement split calculations: Equal, Unequal, Percentage, Share.
-  - Store calculations in `ExpenseShare`.
-- [ ] Settlements CRUD (offsets balances).
+- [x] Expense CRUD:
+  - [x] Implement split calculations: Equal, Unequal, Percentage, Share.
+  - [x] Store calculations in `ExpenseShare`.
+- [x] Settlements CRUD (offsets balances).
 - [ ] Finalize SCOPE.md with the anomaly log and final schema/ERD, then write a Django management command that imports Expenses_Export.csv (place it in backend/data/) applying every decision in SCOPE.md — including the two settlement rows, percentage normalization, name aliasing, date parsing, and currency conversion. Support --dry-run.
 
 ## Phase 4: Balances & Who Owes Whom Algorithm
