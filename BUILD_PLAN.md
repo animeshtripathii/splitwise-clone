@@ -27,9 +27,9 @@ Execution plan for the Splitwise Clone MVP.
 - [ ] Finalize SCOPE.md with the anomaly log and final schema/ERD, then write a Django management command that imports Expenses_Export.csv (place it in backend/data/) applying every decision in SCOPE.md — including the two settlement rows, percentage normalization, name aliasing, date parsing, and currency conversion. Support --dry-run.
 
 ## Phase 4: Balances & Who Owes Whom Algorithm
-- [ ] Balance engine: Calculate net balance per member in the group.
-- [ ] Simplification engine: Compute "who owes whom" set of transactions.
-- [ ] Polling-friendly chat APIs for expenses.
+- [x] Balance engine: Calculate net balance per member in the group.
+- [x] Simplification engine: Compute "who owes whom" set of transactions.
+- [x] Polling-friendly chat APIs for expenses.
 
 ## Phase 5: React Frontend UI Development
 - [ ] Auth pages (Login, Signup).
