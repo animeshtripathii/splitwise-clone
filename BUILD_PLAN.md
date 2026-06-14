@@ -12,9 +12,9 @@ Execution plan for the Splitwise Clone MVP.
 - [x] Commit initial skeleton.
 
 ## Phase 2: Schema, Models & Local Migrations
-- [ ] Build models: Custom User, Group, Expense, ExpenseShare, Settlement, ChatMessage.
-- [ ] Generate and run migrations locally.
-- [ ] Seed script for initial 6 users (Aisha, Rohan, Priya, Meera, Dev, Sam) and default group "The Flat".
+- [x] Build models: Custom User, Group, Expense, ExpenseShare, Settlement, ChatMessage.
+- [x] Generate and run migrations locally.
+- [x] Seed script for initial 6 users (Aisha, Rohan, Priya, Meera, Dev, Sam) and default group "The Flat".
 - [ ] Push skeleton backend to GitHub and deploy to Render to verify Postgres migrations work.
 
 ## Phase 3: Auth & Backend Business Logic APIs
