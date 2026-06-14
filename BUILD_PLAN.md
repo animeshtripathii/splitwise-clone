@@ -18,8 +18,8 @@ Execution plan for the Splitwise Clone MVP.
 - [ ] Push skeleton backend to GitHub and deploy to Render to verify Postgres migrations work (run right after Auth + Group CRUD).
 
 ## Phase 3: Auth & Backend Business Logic APIs
-- [ ] Auth endpoints (JWT login/refresh/register).
-- [ ] Group member CRUD (add/remove from group).
+- [x] Auth endpoints (JWT login/refresh/register/me).
+- [x] Group member CRUD (add/remove from group).
 - [ ] Expense CRUD:
   - Implement split calculations: Equal, Unequal, Percentage, Share.
   - Store calculations in `ExpenseShare`.
