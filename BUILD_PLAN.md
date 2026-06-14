@@ -15,7 +15,7 @@ Execution plan for the Splitwise Clone MVP.
 - [x] Build models: Custom User, Group, Expense, ExpenseShare, Settlement, ChatMessage.
 - [x] Generate and run migrations locally.
 - [x] Seed script for initial 6 users (Aisha, Rohan, Priya, Meera, Dev, Sam) and default group "The Flat".
-- [x] Push skeleton backend to GitHub and [/] deploy to Render to verify Postgres migrations work (run right after Auth + Group CRUD).
+- [x] Push skeleton backend to GitHub and verify Postgres migrations work (Tested on Neon PostgreSQL).
 
 ## Phase 3: Auth & Backend Business Logic APIs
 - [x] Auth endpoints (JWT login/refresh/register/me).
