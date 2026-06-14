@@ -5,11 +5,11 @@ Execution plan for the Splitwise Clone MVP.
 ## Phase 1: Scaffolding & Config (Current)
 - [x] Git initialization.
 - [x] Documentation setup (`AI_CONTEXT.md`, `DECISIONS.md`, `BUILD_PLAN.md`, `SCOPE.md`).
-- [ ] Scaffold Django project under `/backend`.
-- [ ] Configure database (SQLite local, Postgres prod via env), CORS, SimpleJWT, and settings.
-- [ ] Create Render deploy config files (`render.yaml`, `build.sh`, `gunicorn.conf.py`).
-- [ ] Scaffold React app under `/frontend`.
-- [ ] Commit initial skeleton.
+- [x] Scaffold Django project under `/backend`.
+- [x] Configure database (SQLite local, Postgres prod via env), CORS, SimpleJWT, and settings.
+- [x] Create Render deploy config files (`render.yaml`, `build.sh`, `gunicorn.conf.py`).
+- [x] Scaffold React app under `/frontend`.
+- [x] Commit initial skeleton.
 
 ## Phase 2: Schema, Models & Local Migrations
 - [ ] Build models: Custom User, Group, Expense, ExpenseShare, Settlement, ChatMessage.
