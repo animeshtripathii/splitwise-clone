@@ -32,16 +32,16 @@ Execution plan for the Splitwise Clone MVP.
 - [x] Polling-friendly chat APIs for expenses.
 
 ## Phase 5: React Frontend UI Development
-- [ ] Auth pages (Login, Signup).
-- [ ] Dashboard & Group Page:
-  - List of group members.
-  - Net balances display.
-  - Simplified "who owes whom" list.
-  - Settlements trigger form.
-- [ ] Expense Form:
-  - Support adding expenses.
-  - Dynamic forms for Equal, Unequal, Percentage, and Share splitting.
-- [ ] Chat panel under each expense detail modal.
+- [x] Auth pages (Login, Signup).
+- [x] Dashboard & Group Page:
+  - [x] List of group members.
+  - [x] Net balances display.
+  - [x] Simplified "who owes whom" list.
+  - [x] Settlements trigger form.
+- [x] Expense Form:
+  - [x] Support adding expenses.
+  - [x] Dynamic forms for Equal, Unequal, Percentage, and Share splitting.
+- [x] Chat panel under each expense detail modal.
 
 ## Phase 6: Final Deployment & Verification
 - [ ] Run backend tests.
