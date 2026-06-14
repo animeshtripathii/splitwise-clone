@@ -15,7 +15,7 @@ Execution plan for the Splitwise Clone MVP.
 - [x] Build models: Custom User, Group, Expense, ExpenseShare, Settlement, ChatMessage.
 - [x] Generate and run migrations locally.
 - [x] Seed script for initial 6 users (Aisha, Rohan, Priya, Meera, Dev, Sam) and default group "The Flat".
-- [ ] Push skeleton backend to GitHub and deploy to Render to verify Postgres migrations work.
+- [ ] Push skeleton backend to GitHub and deploy to Render to verify Postgres migrations work (run right after Auth + Group CRUD).
 
 ## Phase 3: Auth & Backend Business Logic APIs
 - [ ] Auth endpoints (JWT login/refresh/register).
@@ -24,6 +24,7 @@ Execution plan for the Splitwise Clone MVP.
   - Implement split calculations: Equal, Unequal, Percentage, Share.
   - Store calculations in `ExpenseShare`.
 - [ ] Settlements CRUD (offsets balances).
+- [ ] Finalize SCOPE.md with the anomaly log and final schema/ERD, then write a Django management command that imports Expenses_Export.csv (place it in backend/data/) applying every decision in SCOPE.md — including the two settlement rows, percentage normalization, name aliasing, date parsing, and currency conversion. Support --dry-run.
 
 ## Phase 4: Balances & Who Owes Whom Algorithm
 - [ ] Balance engine: Calculate net balance per member in the group.
