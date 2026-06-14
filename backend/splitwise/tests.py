@@ -201,3 +201,55 @@ class CompleteSplitwiseTests(APITestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(len(res.data), 1)
         self.assertEqual(res.data[0]['text'], 'This is a test comment')
+
+    def test_debt_simplification_and_balances(self):
+        self.client.force_authenticate(user=self.user1)
+        
+        # User 1 pays 90.00 split equally among three members (user1, user2, user3)
+        data = {
+            'group': self.group.id,
+            'payer': self.user1.id,
+            'amount': '90.00',
+            'description': 'Pizza Dinner',
+            'date': '2026-06-14',
+            'split_type': 'equal',
+            'shares': [
+                {'user': self.user1.id},
+                {'user': self.user2.id},
+                {'user': self.user3.id}
+            ]
+        }
+        res = self.client.post(self.expense_list_url, data, format='json')
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+        
+        # Record settlement: User 2 pays User 1 30.00 INR
+        settlement_data = {
+            'group': self.group.id,
+            'from_user': self.user2.id,
+            'to_user': self.user1.id,
+            'amount': '30.00',
+            'date': '2026-06-14'
+        }
+        res_settle = self.client.post(self.settlement_list_url, settlement_data, format='json')
+        self.assertEqual(res_settle.status_code, status.HTTP_201_CREATED)
+        
+        # Request balances for the group
+        balances_url = reverse('group-balances', args=[self.group.id])
+        res_bal = self.client.get(balances_url)
+        self.assertEqual(res_bal.status_code, status.HTTP_200_OK)
+        
+        # Aisha (user1): paid 90, owes 30, received 30 -> net +30
+        # Rohan (user2): paid 0, owes 30, sent 30 -> net 0
+        # Priya (user3): paid 0, owes 30, sent/received 0 -> net -30
+        
+        b_dict = {b['user']['id']: b['net_balance'] for b in res_bal.data['balances']}
+        self.assertEqual(b_dict[self.user1.id], 30.00)
+        self.assertEqual(b_dict[self.user2.id], 0.00)
+        self.assertEqual(b_dict[self.user3.id], -30.00)
+        
+        # Transactions: user3 owes user1 30.00
+        txs = res_bal.data['transactions']
+        self.assertEqual(len(txs), 1)
+        self.assertEqual(txs[0]['from_user']['id'], self.user3.id)
+        self.assertEqual(txs[0]['to_user']['id'], self.user1.id)
+        self.assertEqual(txs[0]['amount'], 30.00)
