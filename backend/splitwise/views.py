@@ -164,3 +164,10 @@ class ChatMessageViewSet(viewsets.ModelViewSet):
         if expense_id:
             queryset = queryset.filter(expense_id=expense_id)
         return queryset.order_by('timestamp')
+
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    ReadOnly viewset to list all users so that they can be selected when creating groups.
+    """
+    queryset = User.objects.all().order_by('name')
+    serializer_class = UserSerializer

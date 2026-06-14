@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from splitwise.views import (
     RegisterView, CurrentUserView, GroupViewSet,
-    ExpenseViewSet, SettlementViewSet, ChatMessageViewSet
+    ExpenseViewSet, SettlementViewSet, ChatMessageViewSet, UserViewSet
 )
 
 router = DefaultRouter()
@@ -11,6 +11,7 @@ router.register(r'groups', GroupViewSet, basename='group')
 router.register(r'expenses', ExpenseViewSet, basename='expense')
 router.register(r'settlements', SettlementViewSet, basename='settlement')
 router.register(r'chat-messages', ChatMessageViewSet, basename='chat-message')
+router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
     # Auth endpoints
