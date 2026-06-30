@@ -2,7 +2,6 @@
 
 A simplified Splitwise clone featuring Django REST Framework on the backend and React (Vite) on the frontend. 
 
-Built overnight for a software engineering internship assignment.
 
 ---
 
